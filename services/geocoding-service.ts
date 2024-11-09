@@ -3,7 +3,7 @@ import { City } from '../types/city'
 
 export const getLocations = async (city: string): Promise<City[]> => {
   const res = await axios.get<City[]>(
-    'http://api.openweathermap.org/geo/1.0/direct',
+    'https://api.openweathermap.org/geo/1.0/direct',
     {
       params: {
         q: city,

@@ -1,4 +1,4 @@
-import { getСurrentWeather } from '@/app/services/current-weather-service'
+import { getСurrentWeather } from '@/services/current-weather-service'
 import Card from '@/components/card'
 import { getWeatherIcon } from '@/utils/weatherIcon'
 import { format } from 'date-fns'

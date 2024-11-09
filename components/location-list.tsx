@@ -1,4 +1,4 @@
-import { City } from '@/app/types/city'
+import { City } from '@/types/city'
 import { cn } from '@/lib/utils'
 
 interface LocationListProps {

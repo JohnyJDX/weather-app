@@ -1,6 +1,6 @@
 'use client'
-import { getLocations } from '@/app/services/geocoding-service'
-import { City } from '@/app/types/city'
+import { getLocations } from '@/services/geocoding-service'
+import { City } from '@/types/city'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { useQuery } from '@tanstack/react-query'
@@ -82,7 +82,7 @@ const SearchDialog = () => {
 
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Input
-          className="h-12 text-base focus-visible:ring-0"
+          className="h-fit py-3 text-base focus-visible:ring-0 focus-visible:ring-offset-0"
           placeholder="Search city..."
           value={inputValue}
           onChange={handleInputChange}

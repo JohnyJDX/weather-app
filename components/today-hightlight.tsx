@@ -1,5 +1,5 @@
-import { getAirPollution } from '@/app/services/air-pollution-service'
-import { getСurrentWeather } from '@/app/services/current-weather-service'
+import { getAirPollution } from '@/services/air-pollution-service'
+import { getСurrentWeather } from '@/services/current-weather-service'
 import { cn } from '@/lib/utils'
 import { format } from 'date-fns'
 import {

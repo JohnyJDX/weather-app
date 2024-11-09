@@ -1,6 +1,6 @@
 'use client'
 
-import { Forecast5days } from '@/app/types/forecast5days'
+import { Forecast5days } from '@/types/forecast5days'
 import {
   ChartConfig,
   ChartContainer,

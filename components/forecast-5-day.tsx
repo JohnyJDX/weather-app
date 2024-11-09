@@ -1,4 +1,4 @@
-import { getForecast5days } from '@/app/services/forecast-5days'
+import { getForecast5days } from '@/services/forecast-5days'
 import {
   Carousel,
   CarouselContent,

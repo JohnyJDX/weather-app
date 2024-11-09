@@ -9,7 +9,6 @@ export function Cobe() {
   const theme = useTheme()
   const searchParams = useSearchParams()
 
-
   const lat = searchParams.get('lat') ?? 0
   const lon = searchParams.get('lon') ?? 0
 
@@ -51,7 +50,7 @@ export function Cobe() {
       height: width * 2,
       phi: 0,
       theta: 0.3,
-      dark: theme.theme === 'dark' ? 1 : 0,
+      dark: theme.resolvedTheme === 'dark' ? 1 : 0,
       diffuse: 3,
       scale: 1,
       mapSamples: 16000,
