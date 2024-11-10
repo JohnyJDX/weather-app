@@ -13,7 +13,7 @@ const Forecast5days = async ({ lat, lon }: { lat: string; lon: string }) => {
 
   return (
     <div className="col-span-12">
-      <Carousel>
+      <Carousel opts={{ dragFree: true }}>
         <CarouselContent>
           {forecast5days.list.map((forecast) => (
             <CarouselItem key={forecast.dt} className="basis-1/12">
