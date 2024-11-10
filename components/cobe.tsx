@@ -2,15 +2,28 @@
 
 import createGlobe from 'cobe'
 import { useTheme } from 'next-themes'
-import { useSearchParams } from 'next/navigation'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+const getCookie = (name: string) => {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop()?.split(';').shift()
+}
 
 export function Cobe() {
   const theme = useTheme()
-  const searchParams = useSearchParams()
+  const [lat, setLat] = useState<string>('0')
+  const [lon, setLon] = useState<string>('0')
 
-  const lat = searchParams.get('lat') ?? 0
-  const lon = searchParams.get('lon') ?? 0
+  useEffect(() => {
+    const latCookie = getCookie('lat')
+    const lonCookie = getCookie('lon')
+
+    if (latCookie && lonCookie) {
+      setLat(latCookie)
+      setLon(lonCookie)
+    }
+  }, [])
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
