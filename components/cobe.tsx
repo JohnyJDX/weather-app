@@ -2,6 +2,7 @@
 
 import createGlobe from 'cobe'
 import { useTheme } from 'next-themes'
+import { useSearchParams } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
 const getCookie = (name: string) => {
@@ -12,25 +13,37 @@ const getCookie = (name: string) => {
 
 export function Cobe() {
   const theme = useTheme()
+  const searchParams = useSearchParams()
+
   const [lat, setLat] = useState<string>('0')
   const [lon, setLon] = useState<string>('0')
 
   useEffect(() => {
-    const latCookie = getCookie('lat')
-    const lonCookie = getCookie('lon')
+    // First try to get lat/lon from search params
+    const latParam = searchParams.get('lat')
+    const lonParam = searchParams.get('lon')
 
-    if (latCookie && lonCookie) {
-      setLat(latCookie)
-      setLon(lonCookie)
+    if (latParam && lonParam) {
+      setLat(latParam)
+      setLon(lonParam)
+    } else {
+      // If not found in search params, fall back to cookies
+      const latCookie = getCookie('lat')
+      const lonCookie = getCookie('lon')
+
+      if (latCookie && lonCookie) {
+        setLat(latCookie)
+        setLon(lonCookie)
+      }
     }
-  }, [])
+  }, [searchParams]) // Only rerun when searchParams change
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
-  const locationToAngles = (lat: string, long: string) => {
-    if (!lat || !long) return
+  const locationToAngles = (lat: string, lon: string) => {
+    if (!lat || !lon) return
     return [
-      Math.PI - ((+long * Math.PI) / 180 - Math.PI / 2),
+      Math.PI - ((+lon * Math.PI) / 180 - Math.PI / 2),
       (+lat * Math.PI) / 180,
     ]
   }
