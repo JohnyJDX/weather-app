@@ -37,6 +37,10 @@ const SearchDialog = () => {
 
   const handleSelectLocation = (location: City) => {
     setSelectedLocation([location.lat, location.lon])
+
+    document.cookie = `lat=${location.lat}; path=/;`
+    document.cookie = `lon=${location.lon}; path=/;`
+
     router.push(
       `/?lat=${location.lat}&lon=${location.lon}&name=${location.name}`,
     )

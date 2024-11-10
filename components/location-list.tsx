@@ -1,5 +1,6 @@
 import { City } from '@/types/city'
 import { cn } from '@/lib/utils'
+import ReactCountryFlag from 'react-country-flag'
 
 interface LocationListProps {
   selectedLocation: number[]
@@ -16,7 +17,7 @@ const LocationList: React.FC<LocationListProps> = ({
     {locations.map((location) => (
       <li
         className={cn(
-          'cursor-pointer rounded-md p-2 transition-colors duration-200 hover:bg-muted',
+          'cursor-pointer space-x-2 rounded-md p-2 transition-colors duration-200 hover:bg-muted',
           {
             'bg-muted':
               location.lat + location.lon ===
@@ -28,7 +29,17 @@ const LocationList: React.FC<LocationListProps> = ({
           handleSelectLocation(location)
         }}
       >
-        {`${location.name} - ${location.country}${location.state ? ` - ${location.state}` : ''}`}
+        <span>
+          {`${location.name} ${location.state ? ` - ${location.state}` : ''}`}
+        </span>
+        <ReactCountryFlag
+          countryCode={location.country}
+          svg
+          style={{
+            width: '1.5em',
+            height: '1.5em',
+          }}
+        />
       </li>
     ))}
   </ul>

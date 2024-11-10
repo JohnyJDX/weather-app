@@ -5,6 +5,7 @@ import TodayHightlight from '@/components/today-hightlight'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Suspense } from 'react'
 import { Cobe } from '@/components/cobe'
+import { cookies } from 'next/headers'
 interface SearchParams {
   lat?: string
   lon?: string
@@ -16,12 +17,13 @@ export default async function Home({
 }: {
   searchParams: SearchParams
 }) {
-  const { lat, lon } = searchParams
+  const lat = cookies().get('lat')?.value ?? searchParams.lat
+  const lon = cookies().get('lon')?.value ?? searchParams.lon
 
   if (!lat || !lon) {
     return (
       <div className="flex grow flex-col items-center justify-center">
-        <p className="text-2xl">No location selected</p>
+        <p className="mt-7 text-4xl">No location selected</p>
       </div>
     )
   }

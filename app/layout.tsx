@@ -15,6 +15,9 @@ const grandstander = Grandstander({
 export const metadata: Metadata = {
   title: 'Weather',
   description: 'Weather app',
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({
