@@ -1,4 +1,4 @@
-import { getСurrentWeather } from '@/services/current-weather-service'
+import { getCurrentWeather } from '@/services/current-weather-service'
 import Card from '@/components/card'
 import { getWeatherIcon } from '@/utils/weatherIcon'
 import { format } from 'date-fns'
@@ -6,8 +6,8 @@ import { Calendar, MapPin } from 'lucide-react'
 import NumberTicker from './ui/number-ticker'
 import GradualSpacing from './ui/gradual-spacing'
 
-const CurrnetWeather = async ({ lat, lon }: { lat: string; lon: string }) => {
-  const weatherData = await getСurrentWeather(lat, lon)
+const CurrentWeather = async ({ lat, lon }: { lat: string; lon: string }) => {
+  const weatherData = await getCurrentWeather(lat, lon)
 
   return (
     <Card className="col-span-3 p-4 sm:col-span-12 lg:col-span-3">
@@ -48,4 +48,4 @@ const CurrnetWeather = async ({ lat, lon }: { lat: string; lon: string }) => {
   )
 }
 
-export default CurrnetWeather
+export default CurrentWeather

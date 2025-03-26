@@ -1,7 +1,7 @@
 import Forecast5days from '@/components/forecast-5-day'
-import CurrnetWeather from '@/components/current-weather'
+import CurrentWeather from '@/components/current-weather'
 import ForecastDaily from '@/components/forecast-daily'
-import TodayHightlight from '@/components/today-hightlight'
+import TodayHighlight from '@/components/today-hightlight'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Suspense } from 'react'
 import { Cobe } from '@/components/cobe'
@@ -35,7 +35,7 @@ export default async function Home({
           <Skeleton className="col-span-3 size-full rounded-md bg-muted" />
         }
       >
-        <CurrnetWeather lat={lat} lon={lon} />
+        <CurrentWeather lat={lat} lon={lon} />
       </Suspense>
 
       <Suspense
@@ -43,7 +43,7 @@ export default async function Home({
           <Skeleton className="col-span-9 size-full rounded-md bg-muted" />
         }
       >
-        <TodayHightlight lat={lat} lon={lon} />
+        <TodayHighlight lat={lat} lon={lon} />
       </Suspense>
 
       <Suspense

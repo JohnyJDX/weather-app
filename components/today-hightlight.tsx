@@ -1,5 +1,5 @@
 import { getAirPollution } from '@/services/air-pollution-service'
-import { getСurrentWeather } from '@/services/current-weather-service'
+import { getCurrentWeather } from '@/services/current-weather-service'
 import { cn } from '@/lib/utils'
 import { format } from 'date-fns'
 import {
@@ -15,9 +15,9 @@ import Card from './card'
 import NumberTicker from './ui/number-ticker'
 import GradualSpacing from './ui/gradual-spacing'
 
-const TodayHightlight = async ({ lat, lon }: { lat: string; lon: string }) => {
+const TodayHighlight = async ({ lat, lon }: { lat: string; lon: string }) => {
   const airPollution = await getAirPollution(lat, lon)
-  const weatherData = await getСurrentWeather(lat, lon)
+  const weatherData = await getCurrentWeather(lat, lon)
 
   return (
     <Card className="col-span-9 p-4 sm:col-span-12 lg:col-span-9">
@@ -25,7 +25,7 @@ const TodayHightlight = async ({ lat, lon }: { lat: string; lon: string }) => {
         <GradualSpacing
           duration={0.2}
           className="mb-2 scroll-m-20 text-left text-2xl font-semibold tracking-tight"
-          text="Today Hightlight"
+          text="Today Highlight"
         />
       </div>
       <div className="flex grid-cols-4 flex-col gap-4 md:grid">
@@ -180,4 +180,4 @@ const TodayHightlight = async ({ lat, lon }: { lat: string; lon: string }) => {
   )
 }
 
-export default TodayHightlight
+export default TodayHighlight

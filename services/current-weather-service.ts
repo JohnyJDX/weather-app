@@ -1,7 +1,7 @@
 import axiosInstance from '../axiosConfig'
 import { WeatherResponse } from '../types/weather'
 
-export const getСurrentWeather = async (
+export const getCurrentWeather = async (
   lat: string = '0',
   lon: string = '0',
 ): Promise<WeatherResponse> => {
